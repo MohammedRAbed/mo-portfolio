@@ -1,0 +1,190 @@
+
+==Start of OCR for page 1==
+St Al-thalatheny, Gaza, Palestine
+abedmohammed2004@gmail.com
++972 594 746 206
+linkedin.com/in/mohammed-r-abed
+Mohammed Abed
+Software Development Graduate | Pursuing MSc Opportunities
+EDUCATION
+Bachelor of Software Development, Faculty of IT | 2021 – 2025
+Islamic University of Gaza | Gaza, Palestine
+High School of Mobile Apps Development | 2019 - 2021
+Soaad Al-Sabbah Secondary School | Gaza, Palestine
+HONORS &
+AWARDS
+Qaddumi Foundation Scholarship | 2021
+CERTIFICATES
+Granted for academic excellence (97.6% high school GPA), supporting my
+undergraduate studies.
+WORK
+EXPERIENCE
+System Design and Architecture: 2025 | Manara Tech | Online
+Meta Android Developer: 2024 | Coursera | Online
+Internet of Things and Artificial Intelligence: 2023 | Digital Academy for
+Scientific Innovation | Gaza, Palestine
+Freelancer (Online)
+Android Apps and Web Developer | Dec. 2021 – PRESENT
+Developing and deploying Android applications using Java, Kotlin, and Jetpack
+Compose, as well as web solutions with Laravel, Node.js, and WordPress.
+Collaborating with clients remotely to deliver customized digital solutions.
+Eliaa Online Marketplace (Online)
+WordPress Developer | Jun. 2023 – Sep. 2023
+Customized and maintained a WordPress multi-vendor e-commerce platform
+using Woocommerce and Dokan plugins. Implemented new features such as
+vendor markets, improved site translations, and optimized user experience.
+NewLine Tech (On-site, Gaza)
+Intern Android Developer | Oct. 2021 – Jan. 2022
+Contributed to mobile app development using Android Studio. Assisted senior
+developers in implementing UI components with XML, fixing bugs, and testing
+application performance. The internship provided hands-on experience that
+helped me apply and strengthen my knowledge of Android Development with
+==End of OCR for page 1==
+==Start of OCR for page 2==
+Kotlin.
+PROJECTS
+SKILLS
+Languages
+Luqta - Android E-Commerce App | GitHub
+•
+•
+•
+•
+Developed a second-hand marketplace app in Kotlin using Jetpack
+Compose, MVVM, and Clean Architecture.
+Implemented secure authentication with Android Keystore and
+integrated Retrofit/OkHttp for networking.
+Built core features: product browsing, cart, and user profiles with
+StateFlow and Coroutines for reactive UI.
+Applied Koin dependency injection and modular structure for scalability
+and clean code separation.
+Volunteer Management System – Laravel Admin Dashboard | GitHub
+•
+•
+•
+Built a volunteer management dashboard using Laravel with the
+Sneat Bootstrap 5 admin template for responsive, developer-friendly
+UI.
+Implemented secure authentication, enabling role-based access to
+manage volunteers, tasks, work locations, and assignments.
+Organized admin panels in a modular fashion to streamline CRUD
+operations and enhance maintainability
+Expense Tracker API – Node.js | GitHub
+•
+•
+•
+•
+Developed a RESTful API using Node.js, Express, and MongoDB,
+modularized into controllers, routes, middlewares, validators, and
+configurations.
+Secured endpoints with JWT-based authentication for login,
+registration, and user profile management.
+Implemented full CRUD operations for expenses with robust input
+validation and standardized error handling.
+Structured the codebase for maintainability with shared response
+modules and clean separation of concerns.
+Programming Languages: Kotlin, Java, Python, PHP, JavaScript.
+Frameworks & Libraries: Jetpack Compose, Android SDK, Node.js, Laravel,
+Express.js.
+Web & CMS: WordPress, WooCommerce, Dokan.
+Databases: MySQL, Firebase, SQLite, MongoDB.
+Architectural Patterns: MVVM, MVI, MVC, Clean Architecture.
+Version Control: Git, GitHub, GitLab.
+Arabic: Native
+English: Upper Intermediate
+==End of OCR for page 2==
+==Start of OCR for page 1==
+Mohammed Abed
+Android Developer | Kotlin & Java | Jetpack Compose
+St Al-thalatheny, Gaza, Palestine
+abedmohammed2004@gmail.com
++972 594 746 206
+linkedin.com/in/mohammed-r-abed
+WORK
+EXPERIENCE
+Freelancer (Online)
+Android Apps and Web Developer | Dec. 2021 – PRESENT
+Developing and deploying Android applications using Java, Kotlin, and Jetpack
+Compose, as well as web solutions with Laravel, Node.js, and WordPress.
+Collaborating with clients remotely to deliver customized digital solutions.
+Eliaa Online Marketplace (Online)
+WordPress Developer | Jun. 2023 – Sep. 2023
+Customized and maintained a WordPress multi-vendor e-commerce platform
+using Woocommerce and Dokan plugins. Implemented new features such as
+vendor markets, improved site translations, and optimized user experience.
+NewLine Tech (On-site, Gaza)
+Intern Android Developer | Oct. 2021 – Jan. 2022
+Contributed to mobile app development using Android Studio. Assisted senior
+developers in implementing UI components with XML, fixing bugs, and testing
+application performance. The internship provided hands-on experience that
+helped me apply and strengthen my knowledge of Android Development with
+Kotlin.
+PROJECTS
+Luqta – Android E-Commerce App – Graduation Project | GitHub
+An Arabic-only, hyper-local e-commerce app for second-hand trading; designed
+and implemented an end-to-end Android client using modern architecture and
+secure token storage.
+•
+•
+•
+Implemented modular Clean + MVVM architecture (domain / data /
+presentation) and Jetpack Compose UI.
+Dependency injection with Koin; networking with Retrofit/OkHttp;
+StateFlow + ViewModel for state management.
+Secure persistent auth (Keystore + AES), product browsing, cart/wishlist,
+and WebSockets for real-time features.
+Corners – Food Delivery Android App | GitHub
+•
+•
+•
+Feature-rich food delivery UI implemented in Kotlin + XML; supports
+browsing restaurants, meals, cart, address management and order
+history (includes Arabic layout support).
+Built modern screens (restaurants, meal details, cart, orders).
+Integrated image loading (Glide) and HTTP client (Retrofit) with
+mock/backend adapters.
+==End of OCR for page 1==
+==Start of OCR for page 2==
+SKILLS
+CtyproTrackerApp – Crypto Tracker (Kotlin) | GitHub
+Real-time cryptocurrency tracker demonstrating scalable architecture and
+production patterns.
+•
+•
+Implemented CLEAN architecture + MVVM; DI with Koin; networking
+using Ktor (and/or OkHttp where applicable).
+Consumes CoinCap API to show live prices, history and updates;
+focuses on maintainability and testability.
+Dijekstra-Gaza-Map – Dijkstra Algorithm Visualizer (Java) | GitHub
+Interactive Android visualization of Dijkstra's algorithm applied to
+cities/roads (Gaza map dataset).
+•
+•
+Loads graph data from assets, visualizes nodes/edges on a map, and
+highlights the shortest path between selected cities.
+Great demonstration of algorithms, data parsing, and custom
+drawing/interaction on Android.
+Programming Languages: Kotlin, Java, Python, PHP, JavaScript.
+Frameworks & Libraries: Jetpack Compose, Android SDK, Node.js, Laravel,
+Express.js.
+Web & CMS: WordPress, WooCommerce, Dokan.
+Databases: MySQL, Firebase, SQLite, MongoDB.
+Architectural Patterns: MVVM, MVI, MVC, Clean Architecture.
+Version Control: Git, GitHub, GitLab.
+EDUCATION
+Bachelor of Software Development, Faculty of IT | 2021 – 2025
+Islamic University of Gaza | Gaza, Palestine
+TRAINING &
+CERTIFICATES
+High School of Mobile Apps Development | 2019 - 2021
+Soaad Al-Sabbah Secondary School | Gaza, Palestine
+System Design and Architecture: 2025 | Manara Tech | Online
+Meta Android Developer: 2024 | Coursera | Online
+PHP Bootcampt: 2023 | Gaza Sky Geeks | Gaza, Palestine
+Internet of Things and Artificial Intelligence: 2023 | Digital Academy for
+Scientific Innovation | Gaza, Palestine
+Freelancing Camp: 2022 | Gaza Sky Geeks | Gaza, Palestine
+LANGUAGES
+Arabic: Native
+English: Upper Intermediate
+==End of OCR for page 2==
