@@ -4,9 +4,38 @@ import { motion } from "framer-motion";
 import { portfolioData } from "@/data/portfolioData";
 import { Mail, MessageSquare, Send } from "lucide-react";
 import Link from "next/link";
+import { useState, useRef } from "react";
+import { sendEmail } from "@/app/actions/sendEmail";
 
 export default function Contact() {
     const { personalInfo } = portfolioData;
+    const formRef = useRef<HTMLFormElement>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [successMessage, setSuccessMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+
+    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+        setIsSubmitting(true);
+        setSuccessMessage("");
+        setErrorMessage("");
+
+        const formData = new FormData(event.currentTarget);
+
+        // Call the server action
+        // We pass null as the first argument because the action expects prevState
+        const result = await sendEmail(null, formData);
+
+        if (result.success) {
+            setSuccessMessage(result.message);
+            if (formRef.current) {
+                formRef.current.reset();
+            }
+        } else {
+            setErrorMessage(result.message);
+        }
+        setIsSubmitting(false);
+    }
 
     return (
         <section id="contact" className="section-padding bg-slate-50 dark:bg-slate-950">
@@ -58,7 +87,7 @@ export default function Contact() {
                         </div>
 
                         <div className="p-10">
-                            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                            <form ref={formRef} className="space-y-6" onSubmit={handleSubmit}>
                                 <div>
                                     <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                                         Name
@@ -66,6 +95,8 @@ export default function Contact() {
                                     <input
                                         type="text"
                                         id="name"
+                                        name="name"
+                                        required
                                         className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all"
                                         placeholder="John Doe"
                                     />
@@ -77,6 +108,8 @@ export default function Contact() {
                                     <input
                                         type="email"
                                         id="email"
+                                        name="email"
+                                        required
                                         className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all"
                                         placeholder="john@example.com"
                                     />
@@ -87,17 +120,33 @@ export default function Contact() {
                                     </label>
                                     <textarea
                                         id="message"
+                                        name="message"
+                                        required
                                         rows={4}
                                         className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all resize-none"
                                         placeholder="Tell me about your project..."
                                     />
                                 </div>
+
+                                {successMessage && (
+                                    <div className="p-4 bg-teal-50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 rounded-lg text-sm font-medium">
+                                        {successMessage}
+                                    </div>
+                                )}
+
+                                {errorMessage && (
+                                    <div className="p-4 bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg text-sm font-medium">
+                                        {errorMessage}
+                                    </div>
+                                )}
+
                                 <button
                                     type="submit"
-                                    className="w-full py-4 bg-slate-900 dark:bg-teal-600 text-white font-bold rounded-lg hover:bg-slate-800 dark:hover:bg-teal-700 transition-colors flex items-center justify-center gap-2"
+                                    disabled={isSubmitting}
+                                    className="w-full py-4 bg-slate-900 dark:bg-teal-600 text-white font-bold rounded-lg hover:bg-slate-800 dark:hover:bg-teal-700 transition-colors flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                                 >
-                                    Send Message
-                                    <Send className="w-4 h-4" />
+                                    {isSubmitting ? "Sending..." : "Send Message"}
+                                    {!isSubmitting && <Send className="w-4 h-4" />}
                                 </button>
                             </form>
                         </div>
