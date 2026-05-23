@@ -14,18 +14,19 @@ import {
     SiWordpress,
     SiWoocommerce,
     SiMysql,
+    SiPostgresql,
     SiFirebase,
     SiSqlite,
     SiMongodb,
     SiGit,
     SiGithub,
     SiGitlab,
-    SiKtor,
 } from "react-icons/si";
 import { FaCode, FaServer, FaTools, FaJava } from "react-icons/fa";
+import type { IconType } from "react-icons";
 
 // Map skill names to React Icons
-export const skillIcons: Record<string, any> = {
+export const skillIcons: Record<string, IconType> = {
     // Languages
     Kotlin: SiKotlin,
     Java: FaJava,
@@ -35,6 +36,7 @@ export const skillIcons: Record<string, any> = {
     TypeScript: SiTypescript,
 
     // Frameworks
+    Android: SiAndroid,
     "Jetpack Compose": SiJetpackcompose,
     "Android SDK": SiAndroid,
     "Node.js": SiNodedotjs,
@@ -46,10 +48,12 @@ export const skillIcons: Record<string, any> = {
     // Web & CMS
     WordPress: SiWordpress,
     WooCommerce: SiWoocommerce,
+    Woocommerce: SiWoocommerce,
     Dokan: FaServer, // No specific icon for Dokan in simple-icons, using generic server
 
     // Databases
     MySQL: SiMysql,
+    Postgres: SiPostgresql,
     Firebase: SiFirebase,
     SQLite: SiSqlite,
     MongoDB: SiMongodb,

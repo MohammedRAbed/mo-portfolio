@@ -10,11 +10,12 @@ export default function ThemeSwitcher() {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        setMounted(true);
+        const frameId = window.requestAnimationFrame(() => setMounted(true));
+        return () => window.cancelAnimationFrame(frameId);
     }, []);
 
     if (!mounted) {
-        return <div className="w-9 h-9" />; // Placeholder
+        return <div className="h-9 w-9" />;
     }
 
     const isDark = resolvedTheme === "dark";
@@ -22,7 +23,7 @@ export default function ThemeSwitcher() {
     return (
         <button
             onClick={() => setTheme(isDark ? "light" : "dark")}
-            className="relative w-9 h-9 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500"
+            className="relative w-9 h-9 flex items-center justify-center rounded-full border-0 outline-none transition-colors hover:bg-slate-100 focus:outline-none focus-visible:outline-none dark:hover:bg-slate-800"
             aria-label="Toggle theme"
         >
             <motion.div

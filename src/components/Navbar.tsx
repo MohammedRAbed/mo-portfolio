@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
+import { portfolioData } from "@/data/portfolioData";
 
 const navLinks = [
     { name: "About", href: "#about" },
@@ -18,52 +19,65 @@ const navLinks = [
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const { resumeUrl } = portfolioData.personalInfo;
 
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
         };
-        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     return (
         <nav
             className={cn(
-                "fixed top-0 w-full z-50 transition-all duration-300",
+                "fixed left-0 right-0 top-4 z-50 px-3 transition-all duration-300 md:top-5",
                 scrolled
-                    ? "bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm border-b border-slate-200/50 dark:border-slate-800/50"
-                    : "bg-transparent"
+                    ? "translate-y-0"
+                    : "translate-y-0"
             )}
         >
-            <div className="container-custom">
-                <div className="flex items-center justify-between h-16 md:h-20">
+            <div className="mx-auto max-w-5xl">
+                <div
+                    className={cn(
+                        "glass-panel flex h-16 items-center justify-between rounded-full px-4 transition-all duration-300 md:h-18 md:px-5",
+                        scrolled
+                            ? "shadow-2xl shadow-teal-900/15 ring-1 ring-teal-400/20"
+                            : "shadow-lg shadow-slate-900/5"
+                    )}
+                >
                     {/* Logo */}
                     <Link
                         href="/"
-                        className="flex items-center gap-2 font-bold text-xl md:text-2xl text-slate-900 dark:text-slate-100 tracking-tight"
+                        className="group flex items-center gap-2 rounded-full pr-2 text-lg font-black tracking-tight text-slate-900 transition-transform hover:-translate-y-0.5 dark:text-slate-100 md:text-xl"
                     >
-                        <Code2 className="w-6 h-6 md:w-8 md:h-8 text-teal-600" />
-                        <span>Mohammed<span className="text-teal-600">.dev</span></span>
+                        <span className="grid h-10 w-10 place-items-center rounded-full bg-slate-950 text-teal-300 shadow-lg shadow-teal-600/20 transition-colors group-hover:bg-teal-600 group-hover:text-white dark:bg-white dark:text-teal-700">
+                            <Code2 className="h-5 w-5" />
+                        </span>
+                        <span>Mohammed<span className="text-teal-600 dark:text-teal-400">.dev</span></span>
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center gap-8">
+                    <div className="hidden items-center gap-2 md:flex">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors relative group"
+                                className="group relative rounded-full px-4 py-2 text-sm font-semibold text-slate-600 transition-all hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-teal-400/10 dark:hover:text-teal-300"
                             >
                                 {link.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-600 dark:bg-teal-400 transition-all group-hover:w-full" />
+                                <span className="absolute inset-x-4 -bottom-0.5 h-px scale-x-0 bg-gradient-to-r from-transparent via-teal-500 to-transparent transition-transform group-hover:scale-x-100" />
                             </Link>
                         ))}
+                    </div>
+
+                    <div className="hidden items-center gap-3 md:flex">
                         <ThemeSwitcher />
                         <Link
-                            href="/CV-Work.pdf"
+                            href={resumeUrl}
                             target="_blank"
-                            className="px-5 py-2.5 text-sm font-semibold text-white bg-teal-600 hover:bg-teal-700 rounded-full transition-colors shadow-lg shadow-teal-600/20"
+                            className="rounded-full bg-slate-950 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-slate-900/15 transition-all hover:-translate-y-0.5 hover:bg-teal-600 hover:shadow-teal-600/25 dark:bg-teal-500 dark:text-slate-950 dark:hover:bg-teal-300"
                         >
                             Resume
                         </Link>
@@ -74,7 +88,7 @@ export default function Navbar() {
                         <ThemeSwitcher />
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="p-2 text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
+                            className="rounded-full p-2 text-slate-600 transition-colors hover:bg-teal-50 hover:text-teal-600 dark:text-slate-300 dark:hover:bg-teal-400/10 dark:hover:text-teal-300"
                             aria-label="Toggle menu"
                         >
                             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -87,27 +101,27 @@ export default function Navbar() {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 overflow-hidden"
+                        initial={{ opacity: 0, y: -10, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -10, scale: 0.98 }}
+                        className="glass-panel mt-3 overflow-hidden rounded-3xl md:hidden"
                     >
-                        <div className="container-custom py-4 flex flex-col gap-4">
+                        <div className="flex flex-col gap-2 p-4">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
                                     href={link.href}
                                     onClick={() => setIsOpen(false)}
-                                    className="text-base font-medium text-slate-600 hover:text-teal-600 transition-colors py-2"
+                                    className="rounded-2xl px-4 py-3 text-base font-semibold text-slate-600 transition-colors hover:bg-teal-50 hover:text-teal-600 dark:text-slate-300 dark:hover:bg-teal-400/10"
                                 >
                                     {link.name}
                                 </Link>
                             ))}
                             <Link
-                                href="/CV-Work.pdf"
+                                href={resumeUrl}
                                 target="_blank"
                                 onClick={() => setIsOpen(false)}
-                                className="w-full text-center px-5 py-3 text-base font-semibold text-white bg-teal-600 rounded-lg hover:bg-teal-700 transition-colors"
+                                className="w-full rounded-2xl bg-teal-600 px-5 py-3 text-center text-base font-bold text-white transition-colors hover:bg-teal-700"
                             >
                                 Resume
                             </Link>

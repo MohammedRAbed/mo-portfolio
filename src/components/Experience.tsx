@@ -1,68 +1,71 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Briefcase, Calendar, GitBranch } from "lucide-react";
 import { portfolioData } from "@/data/portfolioData";
-import { Briefcase, Calendar } from "lucide-react";
 
 export default function Experience() {
     const { experience } = portfolioData;
 
     return (
-        <section id="experience" className="section-padding bg-slate-50 dark:bg-slate-950">
+        <section id="experience" className="section-padding relative overflow-hidden">
+            <div className="absolute inset-x-0 top-1/2 -z-10 h-80 -translate-y-1/2 bg-gradient-to-r from-transparent via-teal-100/70 to-transparent blur-3xl dark:via-teal-950/30" />
             <div className="container-custom">
-                <div className="text-center mb-16">
-                    <div className="flex items-center justify-center gap-2 mb-4">
-                        <Briefcase className="w-5 h-5 text-teal-600 dark:text-teal-400" />
-                        <span className="text-sm font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider">
-                            Career Path
-                        </span>
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100">
+                <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.35 }}
+                    transition={{ duration: 0.5 }}
+                    className="mx-auto mb-16 max-w-3xl text-center"
+                >
+                    <span className="section-eyebrow">
+                        <Briefcase className="h-4 w-4" />
+                        Career Path
+                    </span>
+                    <h2 className="mt-6 text-4xl font-black tracking-[-0.04em] text-slate-950 dark:text-white md:text-5xl">
                         Work Experience
                     </h2>
-                </div>
+                </motion.div>
 
-                <div className="max-w-3xl mx-auto relative">
-                    {/* Timeline Line */}
-                    <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-slate-200 dark:bg-slate-800 -translate-x-1/2 hidden md:block" />
+                <div className="relative mx-auto max-w-5xl">
+                    <div className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-transparent via-teal-400/70 to-transparent md:left-1/2" />
 
-                    <div className="space-y-12">
+                    <div className="space-y-10">
                         {experience.map((job, index) => (
                             <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
+                                key={`${job.role}-${job.period}`}
+                                initial={{ opacity: 0, y: 26 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: false }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className={`relative flex flex-col md:flex-row gap-8 ${index % 2 === 0 ? "md:flex-row-reverse" : ""
-                                    }`}
+                                viewport={{ once: false, amount: 0.28 }}
+                                transition={{ duration: 0.55, delay: index * 0.1 }}
+                                className="relative grid gap-6 pl-12 md:grid-cols-2 md:pl-0"
                             >
-                                {/* Timeline Dot */}
-                                <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-teal-600 rounded-full border-4 border-white dark:border-slate-900 shadow-sm -translate-x-[5px] md:-translate-x-1/2 mt-1.5 hidden md:block" />
-
-                                {/* Content */}
-                                <div className="flex-1 md:w-1/2">
-                                    <div className={`bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 relative ${index % 2 === 0 ? "md:text-left" : "md:text-right"
-                                        }`}>
-                                        <div className={`flex items-center gap-2 text-sm text-teal-600 dark:text-teal-400 font-medium mb-2 ${index % 2 === 0 ? "md:justify-start" : "md:justify-end"
-                                            }`}>
-                                            <Calendar className="w-4 h-4" />
-                                            {job.period}
-                                        </div>
-                                        <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-1">
-                                            {job.role}
-                                        </h3>
-                                        <div className="text-slate-600 dark:text-slate-300 font-medium mb-4">
-                                            {job.company}
-                                        </div>
-                                        <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                                            {job.description}
-                                        </p>
-                                    </div>
+                                <div className="absolute left-4 top-7 z-10 grid h-9 w-9 -translate-x-1/2 place-items-center rounded-full border-4 border-white bg-teal-600 text-white shadow-lg shadow-teal-600/25 dark:border-slate-950 md:left-1/2">
+                                    <GitBranch className="h-4 w-4" />
                                 </div>
 
-                                {/* Empty Space for alignment */}
-                                <div className="flex-1 md:w-1/2 hidden md:block" />
+                                <article className={`glass-panel relative rounded-[2rem] p-6 transition-all hover:-translate-y-1 hover:border-teal-300 dark:hover:border-teal-400/40 ${index % 2 === 0 ? "md:col-start-2" : "md:col-start-1 md:row-start-1"}`}>
+                                    <div className="mb-4 flex flex-wrap items-center gap-3 text-sm font-bold text-teal-700 dark:text-teal-300">
+                                        <span className="inline-flex items-center gap-2 rounded-full bg-teal-50 px-3 py-1.5 dark:bg-teal-400/10">
+                                            <Calendar className="h-4 w-4" />
+                                            {job.period}
+                                        </span>
+                                    </div>
+                                    <h3 className="text-2xl font-black tracking-[-0.03em] text-slate-950 dark:text-white">
+                                        {job.role}
+                                    </h3>
+                                    <p className="mt-2 text-sm font-bold text-slate-500 dark:text-slate-400">
+                                        {job.company}
+                                    </p>
+                                    <ul className="mt-5 space-y-3">
+                                        {job.description.map((item) => (
+                                            <li key={item} className="flex gap-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                                                <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500" />
+                                                <span>{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </article>
                             </motion.div>
                         ))}
                     </div>

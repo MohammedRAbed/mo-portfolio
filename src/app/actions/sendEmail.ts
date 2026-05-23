@@ -2,7 +2,7 @@
 
 import nodemailer from 'nodemailer';
 
-export async function sendEmail(prevState: any, formData: FormData) {
+export async function sendEmail(_prevState: unknown, formData: FormData) {
   const name = formData.get('name') as string;
   const email = formData.get('email') as string;
   const message = formData.get('message') as string;

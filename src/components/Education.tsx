@@ -1,49 +1,53 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { portfolioData } from "@/data/portfolioData";
 import { GraduationCap } from "lucide-react";
+import { portfolioData } from "@/data/portfolioData";
 
 export default function Education() {
     const { education } = portfolioData;
 
     return (
-        <section id="education" className="section-padding bg-white dark:bg-slate-900">
+        <section id="education" className="section-padding relative overflow-hidden">
             <div className="container-custom">
-                <div className="text-center mb-16">
-                    <div className="flex items-center justify-center gap-2 mb-4">
-                        <GraduationCap className="w-5 h-5 text-teal-600 dark:text-teal-400" />
-                        <span className="text-sm font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider">
-                            Academic Background
-                        </span>
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100">
+                <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.35 }}
+                    transition={{ duration: 0.5 }}
+                    className="mx-auto mb-12 max-w-3xl text-center"
+                >
+                    <span className="section-eyebrow">
+                        <GraduationCap className="h-4 w-4" />
+                        Academic Background
+                    </span>
+                    <h2 className="mt-6 text-4xl font-black tracking-[-0.04em] text-slate-950 dark:text-white md:text-5xl">
                         Education
                     </h2>
-                </div>
+                </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2">
                     {education.map((edu, index) => (
                         <motion.div
-                            key={index}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: false }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="bg-slate-50 dark:bg-slate-800 p-8 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col items-center text-center hover:border-teal-200 dark:hover:border-teal-800 transition-colors"
+                            key={`${edu.degree}-${edu.period}`}
+                            initial={{ opacity: 0, y: 22 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: false, amount: 0.3 }}
+                            transition={{ duration: 0.5, delay: index * 0.08 }}
+                            className="glass-panel rounded-[2rem] p-7 transition-all hover:-translate-y-1 hover:border-teal-300 dark:hover:border-teal-400/40"
                         >
-                            <div className="p-4 bg-white dark:bg-slate-900 rounded-full shadow-sm mb-6">
-                                <GraduationCap className="w-8 h-8 text-teal-600 dark:text-teal-400" />
+                            <div className="mb-6 grid h-14 w-14 place-items-center rounded-2xl bg-teal-50 text-teal-700 dark:bg-teal-400/10 dark:text-teal-300">
+                                <GraduationCap className="h-7 w-7" />
                             </div>
-                            <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+                            <h3 className="text-2xl font-black tracking-[-0.03em] text-slate-950 dark:text-white">
                                 {edu.degree}
                             </h3>
-                            <div className="text-teal-600 dark:text-teal-400 font-medium mb-2">
+                            <p className="mt-3 font-bold text-teal-700 dark:text-teal-300">
                                 {edu.institution}
-                            </div>
-                            <div className="text-slate-500 dark:text-slate-400 text-sm">
+                            </p>
+                            <p className="mt-2 text-sm font-semibold text-slate-500 dark:text-slate-400">
                                 {edu.period}
-                            </div>
+                            </p>
                         </motion.div>
                     ))}
                 </div>
